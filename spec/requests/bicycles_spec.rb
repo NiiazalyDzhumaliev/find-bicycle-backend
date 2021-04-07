@@ -12,7 +12,9 @@ RSpec.describe 'Bicycles', type: :request do
   end
 
   describe 'POST /bicycles' do
-    let(:valid_attributes) { { model: 'Forward', description: 'Budget bicycles manufacturer', url: 'http://www.forward.com' } }
+    let(:valid_attributes) do
+      { model: 'Forward', description: 'Budget bicycles manufacturer', url: 'http://www.forward.com' }
+    end
 
     context 'when the request is valid' do
       before { post '/bicycles', params: valid_attributes }
