@@ -1,12 +1,12 @@
 class BicyclesController < ApplicationController
   def index
     @bicycles = Bicycle.all
-    json.response(@bicycles)
+    json_response(@bicycles)
   end
 
   def create
     @bicycle = Bicycle.create(bicycle_params)
-    json.response(@bicycle, :created)
+    json_response(@bicycle, :created)
   end
 
   private
