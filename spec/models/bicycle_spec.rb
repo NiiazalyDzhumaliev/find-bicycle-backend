@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Bicycle, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:favourites) }
+  it { should validate_presence_of(:model) }
+  it { should validate_presence_of(:description) }
 end
