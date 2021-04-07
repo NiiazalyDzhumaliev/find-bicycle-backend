@@ -10,4 +10,16 @@ RSpec.describe 'Bicycles', type: :request do
       expect(json.size).to eq(10)
     end
   end
+
+  describe 'POST /bicycles' do
+    let(:valid_attributes) { { model: 'Forward', description: 'Budget bicycles manufacturer', url: 'http://www.forward.com' } }
+
+    context 'when the request is valid' do
+      before { post '/bicycles', params: valid_attributes }
+
+      it 'creates a bicycle' do
+        expect(json['model']).to eq('Forward')
+      end
+    end
+  end
 end
