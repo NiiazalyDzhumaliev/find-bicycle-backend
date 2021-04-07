@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_124213) do
+ActiveRecord::Schema.define(version: 2021_04_07_125639) do
 
   create_table "bicycles", force: :cascade do |t|
     t.string "model"
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 2021_04_07_124213) do
     t.integer "bicycle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["bicycle_id"], name: "index_favourites_on_bicycle_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +38,5 @@ ActiveRecord::Schema.define(version: 2021_04_07_124213) do
   end
 
   add_foreign_key "favourites", "bicycles"
+  add_foreign_key "favourites", "users"
 end
