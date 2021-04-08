@@ -18,6 +18,16 @@ class FavouritesController < ApplicationController
     end
   end
 
+  def delete
+    if already_favourite?
+      @favourite = current_user.favourites.find_by(favourite_params)
+      @favourite.destroy
+      json_response('Deleted')
+    else
+      json_response('The user did not add to favourite')
+    end
+  end
+
   private
 
   def favourite_params
