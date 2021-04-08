@@ -4,9 +4,18 @@ class FavouritesController < ApplicationController
     json_response(@favourites)
   end
 
+  def already_favourite?
+    Favourite.where(user_id: current_user.id, bicycle_id:
+    params[:bicycle_id]).exists?
+  end
+
   def create
-    @favourite = current_user.favourites.create!(favourite_params)
-    json_response(@favourite, :created)
+    if !already_favourite?
+      @favourite = current_user.favourites.create!(favourite_params)
+      json_response(@favourite, :created)
+    else
+      json_response('Already favourite')
+    end
   end
 
   private
