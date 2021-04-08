@@ -2,6 +2,6 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :favourites, dependent: :destroy
-  has_many :favourite_bicycles, through: :favourites, source: :bicycle
+  has_many :favourite_bicycles, through: :favourites, source: :bicycle, dependent: :destroy
   validates_presence_of :name, :email, :password_digest
 end
