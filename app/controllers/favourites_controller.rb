@@ -31,6 +31,6 @@ class FavouritesController < ApplicationController
   private
 
   def favourite_params
-    params.permit(:bicycle_id)
+    params.require(:favourite).permit(:bicycle_id)
   end
 end
