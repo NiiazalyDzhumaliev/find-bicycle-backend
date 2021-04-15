@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://vast-hollows-37440.herokuapp.com'
+    origins 'http://localhost:3000'
 
     resource '*',
       headers: :any,
